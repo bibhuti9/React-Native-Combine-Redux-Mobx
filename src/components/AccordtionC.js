@@ -2,7 +2,7 @@ import {View, Text, Animated, TouchableOpacity, StyleSheet} from 'react-native';
 import {SIZES} from '../theme/color';
 import React, {useRef, useState} from 'react';
 
-export default function AccordtionC({children}) {
+export default function AccordtionC({children, onLayout}) {
   const animate = useRef(new Animated.Value(0)).current;
   const [expand, setExpand] = useState();
   const expandStyle = () => {
@@ -22,7 +22,9 @@ export default function AccordtionC({children}) {
         style={styles.buttonStyle}>
         <Text>Expand</Text>
       </TouchableOpacity>
-      <Animated.View style={{height: animate}}>{children}</Animated.View>
+      <Animated.View onLayout={onLayout} style={{height: animate}}>
+        {children}
+      </Animated.View>
     </View>
   );
 }
