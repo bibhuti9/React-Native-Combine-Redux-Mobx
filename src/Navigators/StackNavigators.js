@@ -1,25 +1,20 @@
-import {View, Text, Image} from 'react-native';
-import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import HomeScreen from '../screens/HomeScreen';
-import ProfileScreen from '../screens/ProfileScreen';
-import AddProductScreen from '../screens/AddProductScreen';
+import {screens} from '../screens/Index';
 
 const Stack = createStackNavigator();
 export default function StackNavigators() {
   return (
-    <Stack.Navigator
-      screenOptions={{presentation: 'modal', headerShown: false}}>
-      <Stack.Screen
-        name="Home Screen"
-        options={{
-          tabBarBadge: 2,
-        }}
-        component={HomeScreen}
-      />
-      <Stack.Screen name="Profile Screen" component={ProfileScreen} />
-      <Stack.Screen name="Add Product Screen" component={AddProductScreen} />
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      {screens.map((screen, index) => {
+        return (
+          <Stack.Screen
+            key={String(index)}
+            name={screen.name}
+            component={screen.component}
+          />
+        );
+      })}
     </Stack.Navigator>
   );
 }

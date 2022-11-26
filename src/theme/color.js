@@ -35,11 +35,21 @@ export const textVarient = {
 
 export const commonStyle = {
   iconStyle: {
-    height: 25,
-    width: 25,
+    height: 40,
+    width: 40,
   },
   smallImageStyle: {
-    width: 30,
-    height: 30,
+    width: 50,
+    height: 50,
+  },
+  shadow: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 6,
   },
 };
