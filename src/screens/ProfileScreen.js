@@ -1,13 +1,17 @@
-import {View, Text, SafeAreaView} from 'react-native';
-import React from 'react';
+import {View, SafeAreaView} from 'react-native';
 import HeaderC from '../components/commonComponent/Header/HeaderC';
 import IconC from '../components/commonComponent/Icon/IconC';
-import {leftArrow, leftArrow2, shoppingCart} from '../theme/icon';
+import {leftArrow2, shoppingCart} from '../theme/icon';
 import {useNavigation} from '@react-navigation/native';
+import TouchableOpacityC from '../components/commonComponent/TouchableOpacity/TouchableOpacityC';
+import {restRoot} from '../utilities/navigation';
 
 export default function ProfileScreen({route}) {
   console.log(route.params);
   const navigation = useNavigation();
+  const onPress = () => {
+    restRoot('Home');
+  };
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={{flex: 1}}>
@@ -18,6 +22,12 @@ export default function ProfileScreen({route}) {
           leftIconPress={() => navigation.goBack()}
           rightIcon={<IconC source={shoppingCart} />}
         />
+        <View>
+          <TouchableOpacityC
+            onPress={onPress}
+            textOptions={{text: 'Click to back'}}
+          />
+        </View>
       </View>
     </SafeAreaView>
   );

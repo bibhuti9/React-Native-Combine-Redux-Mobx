@@ -1,6 +1,5 @@
 import {Text, StyleSheet} from 'react-native';
-import React from 'react';
-import {COLORS, SIZES, textVarient} from '../../../theme/color';
+import {COLORS, textVarient} from '../../../theme/color';
 
 export default function TextC({options}) {
   const styles = StyleSheet.create({

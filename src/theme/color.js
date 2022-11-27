@@ -23,7 +23,7 @@ export const COLORS = {
   white: '#fff',
 };
 export const textVarient = {
-  XL: 18,
+  XL: 30,
   L: 25,
   M: 20,
   S: 18,
