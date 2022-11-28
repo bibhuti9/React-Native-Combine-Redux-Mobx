@@ -27,7 +27,7 @@ export const textVarient = {
   L: 25,
   M: 20,
   S: 18,
-  SM: 15,
+  SM: 12,
   weight: 'bold',
   weight1: '800',
   weight2: '200',
