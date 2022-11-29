@@ -1,21 +1,20 @@
 import {
-  StyleSheet,
   View,
+  StyleSheet,
   Animated,
   TouchableOpacity,
   Easing,
 } from 'react-native';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {screens} from '../../../screens/Index';
-import {COLORS, SIZES} from '../../../theme/color';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {COLORS, SIZES} from '../../../theme/color';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 export default function BottomTabRenderC({state, descriptors, navigation}) {
   const inset = useSafeAreaInsets();
-  const animatedValue = new Animated.Value(1);
-
+  const animatedValue = new Animated.Value(0);
   return (
-    <View style={{flexDirection: 'row', height: 90}}>
+    <View style={[styles.container, {height: inset.bottom + 50}]}>
       {screens.map((route, index) => {
         const isFocused = state.index === index;
         const onPress = () => {
@@ -23,7 +22,7 @@ export default function BottomTabRenderC({state, descriptors, navigation}) {
           Animated.timing(animatedValue, {
             toValue: 1,
             duration: 300,
-            easing: Easing.ease,
+            easing: Easing.linear,
 
             useNativeDriver: true,
           }).start();
@@ -34,55 +33,56 @@ export default function BottomTabRenderC({state, descriptors, navigation}) {
           });
 
           if (!isFocused && !event.defaultPrevented) {
+            // The `merge: true` option makes sure that the params inside the tab screen are preserved
             navigation.navigate({name: route.name, merge: true});
           }
         };
         const scale = animatedValue.interpolate({
-          inputRange: [10, 11],
+          inputRange: [11, 12],
           outputRange: [0, 1],
         });
-
         return (
-          <View key={String(index)} style={styles.bottomContainer}>
-            <TouchableOpacity
-              onPressIn={onPress}
-              onPressOut={onPress}
-              style={styles.bottomTabButtonStyle}>
-              <Animated.View
-                style={
-                  isFocused && {
-                    transform: [{scaleX: scale}],
-                    ...styles.bottomTopBar,
-                  }
-                }></Animated.View>
-              <Icon
-                name={`${route.icon}${isFocused ? '' : '-outline'}`}
-                style={{
-                  fontSize: 30,
-                  color: isFocused ? COLORS.primary : COLORS.black,
-                }}
-              />
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity
+            onPressIn={onPress}
+            onPressOut={onPress}
+            key={String(index)}
+            style={styles.bottomTabButton}>
+            <Animated.View
+              style={
+                isFocused && {
+                  transform: [{scaleX: scale}],
+                  ...styles.bottomTabTop,
+                }
+              }></Animated.View>
+            <Icon
+              name={`${route.icon}${isFocused ? '' : '-outline'}`}
+              style={[
+                styles.bottomTabIcon,
+                {color: isFocused ? COLORS.primary : COLORS.black},
+              ]}
+            />
+          </TouchableOpacity>
         );
       })}
     </View>
   );
 }
 const styles = StyleSheet.create({
-  bottomContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    backgroundColor: COLORS.white,
   },
-  bottomTabButtonStyle: {
-    justifyContent: 'center',
-    alignItems: 'center',
+  bottomTabIcon: {
+    fontSize: 30,
+  },
+  bottomTabButton: {
     padding: SIZES.padding,
+    justifyContent: 'space-around',
+    alignItems: 'center',
   },
-  bottomTopBar: {
-    borderColor: COLORS.primary,
+  bottomTabTop: {
     borderWidth: 2,
-    borderRadius: 1,
+    borderColor: COLORS.primary,
   },
 });

@@ -3,10 +3,10 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {Platform, Text} from 'react-native';
 
 import {navigationRef} from './src/utilities/navigation';
-import BottomStack from './src/Navigators/BottomStack';
 import StatusBarC from './src/components/commonComponent/StatusBar/StatusBarC';
 import {COLORS} from './src/theme/color';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import DrawerContainer from './src/Navigators/DrawerContainer';
 
 console.log(`Application run in ${Platform.OS == 'ios' ? 'IOS' : 'android'}`);
 
@@ -19,7 +19,7 @@ export default function App() {
         ref={navigationRef}
         onReady={() => <Text>Loading</Text>}>
         <Stack.Navigator screenOptions={{headerShown: false}}>
-          <Stack.Screen name="BottomStack" component={BottomStack} />
+          <Stack.Screen name="DrawerContainer" component={DrawerContainer} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

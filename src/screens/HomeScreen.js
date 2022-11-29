@@ -21,6 +21,7 @@ export default function HomeScreen() {
     <View style={{flex: 1, opacity: 1}}>
       <HeaderC
         leftIcon={<IconC source={menu} />}
+        leftIconPress={() => navigation.openDrawer()}
         rightIcon={<IconC source={user} />}
       />
       <View style={{flex: 1}}>

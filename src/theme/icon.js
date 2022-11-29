@@ -10,3 +10,5 @@ export const distance = require('../assets/distance.png');
 export const deliveryTruck = require('../assets/deliveryTruck.png');
 export const location = require('../assets/location.png');
 export const star = require('../assets/star.png');
+export const plusWhite = require('../assets/plusWhite.png');
+export const reactLogo = require('../assets/atom.png');

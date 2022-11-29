@@ -7,17 +7,20 @@ export const screens = [
     component: HomeScreen,
     key: 'HomeScreen',
     icon: 'home',
+    lable: 'Home',
   },
   {
     name: 'Add Product',
     component: AddProductScreen,
     key: 'AddProductScreen',
     icon: 'add-circle',
+    lable: 'Notification',
   },
   {
     name: 'Profile',
     component: ProfileScreen,
     key: 'ProfileScreen',
     icon: 'person',
+    lable: 'Profile',
   },
 ];

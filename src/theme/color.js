@@ -9,7 +9,7 @@ export const SIZES = {
 };
 export const COLORS = {
   primary: '#355EFF',
-  secondary: '#FF6104',
+  secondary: '#f23d6a',
   success: '#70C04F',
   error: '#FF0000',
   warning: '#EC8A00',
