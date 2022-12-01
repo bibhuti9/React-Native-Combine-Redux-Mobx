@@ -1,32 +1,37 @@
-import {View} from 'react-native';
+import {Image, View} from 'react-native';
 
 import HeaderC from '../components/commonComponent/Header/HeaderC';
 import IconC from '../components/commonComponent/Icon/IconC';
-import CardC from '../components/commonComponent/Card/CardC';
 
-import {menu, user} from '../theme/icon';
-import {menus} from '../data/dummyData';
+import {menu, shoppingCart} from '../theme/icon';
 import {useNavigation} from '@react-navigation/native';
-import {useLayoutEffect} from 'react';
-export default function HomeScreen() {
-  const navigation = useNavigation();
+import TopTabStack from '../Navigators/TopTabBar/TopTabStack';
+import {commonStyle} from '../theme/color';
+import Baedge from '../components/commonComponent/Badge/Baedge';
+import {observer} from 'mobx-react';
 
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      tabBarBadge: 3,
-    });
-  }, []);
+function HomeScreen() {
+  const navigation = useNavigation();
+  observer(
+    (AddToCart = () => {
+      return (
+        <View>
+          <Image source={shoppingCart} style={{...commonStyle.iconStyle}} />
+          <Baedge badgeT={2} />
+        </View>
+      );
+    }),
+  );
 
   return (
     <View style={{flex: 1, opacity: 1}}>
       <HeaderC
         leftIcon={<IconC source={menu} />}
         leftIconPress={() => navigation.openDrawer()}
-        rightIcon={<IconC source={user} />}
+        rightIcon={<AddToCart />}
       />
-      <View style={{flex: 1}}>
-        <CardC data={menus} />
-      </View>
+      <TopTabStack />
     </View>
   );
 }
+export default observer(HomeScreen);

@@ -1,6 +1,6 @@
-import {View, Text, TouchableOpacity, Image} from 'react-native';
-import React from 'react';
+import {View, TouchableOpacity} from 'react-native';
 import {styles} from './style';
+import {SIZES} from '../../../theme/color';
 
 export default function HeaderC({
   leftIcon,
@@ -26,7 +26,11 @@ export default function HeaderC({
       />
       {/* body */}
       {/* right */}
-      <Button icon={rightIcon} onPress={rightIconPress} />
+      <Button
+        icon={rightIcon}
+        style={{marginHorizontal: SIZES.margin + 5}}
+        onPress={rightIconPress}
+      />
     </View>
   );
 }

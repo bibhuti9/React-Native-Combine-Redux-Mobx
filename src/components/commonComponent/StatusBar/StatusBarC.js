@@ -6,7 +6,6 @@ export default function StatusBarC({
   barStyle = 'dark-content',
 }) {
   const inset = useSafeAreaInsets();
-  console.log(inset);
   return (
     <View
       style={{

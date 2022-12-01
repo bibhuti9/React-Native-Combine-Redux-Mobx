@@ -170,3 +170,20 @@ export const menus = [
     __v: 0,
   },
 ];
+export const userInfo = {
+  _id: '11',
+  mimages: [
+    "https://b.zmtcdn.com/data/dish_photos/721/9d77ab711c940e7a55fed7a126dd5721.jpg?fit=around|'130':130&crop='130':130;*,*",
+  ],
+  tags: ['#Delicious', '#yummy', '#Crunchy Chaat', '#Spicy'],
+  mname: 'Chinese Bhel',
+  mdesc:
+    'Mixture of Fresh Rice, Steam Noodles, Fried Noodles, Cut Manchurian balls tossed with cabbage, bell peppers, carrots, Garlic & Ginger. Taste medium spicy.',
+  mprice: 350,
+  mqty: 5,
+  r_id: 'prince',
+  c_id: '2',
+  rating: '4',
+  deliveryCharges: 'Free',
+  __v: 0,
+};

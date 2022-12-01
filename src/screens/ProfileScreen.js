@@ -7,7 +7,6 @@ import TouchableOpacityC from '../components/commonComponent/TouchableOpacity/To
 import {restRoot} from '../utilities/navigation';
 
 export default function ProfileScreen({route}) {
-  console.log(route.params);
   const navigation = useNavigation();
   const onPress = () => {
     restRoot('Home');
